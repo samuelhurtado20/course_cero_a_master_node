@@ -1,0 +1,77 @@
+const employies = [
+    {
+        id: 1,
+        name: 'Samuel'
+    },
+    {
+        id: 2,
+        name: 'Maria'
+    },
+    {
+        id: 3,
+        name: 'Roberto'
+    }
+];
+
+const salaries = [
+    {
+        id: 1,
+        salary: 1000
+    },
+    {
+        id: 2,
+        salary: 1500
+    }
+];
+
+
+const getEmployee = ( id, callback ) => {
+
+    const employee = employies.find( e => e.id === id )?.name
+
+    if ( employee ) {
+        callback( null, employee );
+    } else {
+        callback(`${ id } not found`);
+    }
+}
+
+const getSalary = ( id, callback ) => {
+
+    const salary = salaries.find( s => s.id === id )?.salary;
+
+    if ( salary ) {
+        callback( null, salary );
+    } else {
+        callback( `salary with id ${ id } not found` );
+    }
+
+}
+
+const id = 3;
+
+getEmployee( id, ( err, empleado ) => {
+
+    if ( err ) {
+        console.log('ERROR!');
+        return console.log(err);
+    }
+
+    getSalary(id, (err, salary) => {
+
+        if ( err ) {
+            return console.log(err);
+        }
+    
+        console.log('Employee:', empleado, 'salary:', salary )
+    })
+
+})
+
+
+
+
+
+
+
+
