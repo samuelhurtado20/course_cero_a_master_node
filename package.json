@@ -1,0 +1,27 @@
+{
+  "name": "course_cero_a_master_node",
+  "version": "1.0.0",
+  "description": "Rest, despliegues, Heroku, Mongo, Git, GitHub, Sockets, archivos, JWT y mucho más para ser un experto en Node",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelhurtado20/course_cero_a_master_node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samuelhurtado20/course_cero_a_master_node/issues"
+  },
+  "homepage": "https://github.com/samuelhurtado20/course_cero_a_master_node#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.5.1"
+  }
+}
