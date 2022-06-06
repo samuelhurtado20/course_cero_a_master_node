@@ -22,6 +22,7 @@
   "homepage": "https://github.com/samuelhurtado20/course_cero_a_master_node#readme",
   "dependencies": {
     "colors": "^1.4.0",
+    "inquirer": "^8.2.4",
     "uuid": "^8.3.2",
     "yargs": "^17.5.1"
   }
