@@ -1,13 +1,13 @@
 require('colors');
 
-const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
+const { guardarDB, leerDB } = require('./helper/saveFile');
 const { inquirerMenu, 
         pausa,
         leerInput,
         listadoTareasBorrar,
         confirmar,
         mostrarListadoChecklist
-} = require('./helpers/inquirer');
+} = require('./helper/inquirer');
 
 const Tareas = require('./models/tareas');
 
