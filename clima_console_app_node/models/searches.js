@@ -1,34 +1,30 @@
 const fs = require('fs');
-
 const axios = require('axios');
 
 
-class Busquedas {
+class Search {
     
-    historial = [];
+    history = [];
     dbPath = './db/database.json';
 
     constructor() {
-        this.leerDB();
+        this.readDB();
     }
 
-    get historialCapitalizado() {
-        return this.historial.map( lugar => {
+    get historyCapitalized() {
+        return this.history.map( place => {
 
-            let palabras = lugar.split(' ');
-            palabras = palabras.map( p => p[0].toUpperCase() + p.substring(1) );
-
-            return palabras.join(' ')
-
+            let words = place.split(' ');
+            words = words.map( p => p[0].toUpperCase() + p.substring(1) );
+            return words.join(' ')
         })
     }
-
 
     get paramsMapbox() {
         return {
             'access_token': process.env.MAPBOX_KEY,
             'limit': 5,
-            'language': 'es'
+            'language': 'en'
         }
     }
 
@@ -36,25 +32,24 @@ class Busquedas {
         return {
             appid: process.env.OPENWEATHER_KEY,
             units: 'metric',
-            lang: 'es'
+            lang: 'en'
         }
     }
 
-    async ciudad( lugar = '' ) {
-
+    async city( place = '' ) {
         try {
-            // Petición http
+            // request http
             const intance = axios.create({
-                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lugar }.json`,
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${ place }.json`,
                 params: this.paramsMapbox
             });
 
             const resp = await intance.get();
-            return resp.data.features.map( lugar => ({
-                id: lugar.id,
-                nombre: lugar.place_name,
-                lng: lugar.center[0],
-                lat: lugar.center[1],
+            return resp.data.features.map( place => ({
+                id: place.id,
+                name: place.place_name,
+                lng: place.center[0],
+                lat: place.center[1],
             }));
             
         } catch (error) {
@@ -62,72 +57,48 @@ class Busquedas {
         }
     }
 
-
-    async climaLugar( lat, lon ) {
-
-        try {
-            
+    async weatherPlace( lat, lon ) {
+        try {            
             const instance = axios.create({
                 baseURL: `https://api.openweathermap.org/data/2.5/weather`,
                 params: { ...this.paramsWeather, lat, lon }
             })
-
             const resp = await instance.get();
             const { weather, main } = resp.data;
-
             return {
                 desc: weather[0].description,
                 min: main.temp_min,
                 max: main.temp_max,
                 temp: main.temp
             }
-
         } catch (error) {
             console.log(error);
         }
-
     }
 
-
-    agregarHistorial( lugar = '' ) {
-
-        if( this.historial.includes( lugar.toLocaleLowerCase() ) ){
+    addHistory( place = '' ) {
+        if( this.history.includes( place.toLocaleLowerCase() ) ){
             return;
         }
-        this.historial = this.historial.splice(0,5);
-
-        this.historial.unshift( lugar.toLocaleLowerCase() );
-
-        // Grabar en DB
-        this.guardarDB();
+        this.history = this.history.splice(0,5);
+        this.history.unshift( place.toLocaleLowerCase() );
+        // save on DB
+        this.saveDb();
     }
 
-    guardarDB() {
-
+    saveDb() {
         const payload = {
-            historial: this.historial
+            history: this.history
         };
-
         fs.writeFileSync( this.dbPath, JSON.stringify( payload ) );
-
     }
 
-    leerDB() {
-
-        if( !fs.existsSync( this.dbPath ) ) return;
-        
+    readDB() {
+        if( !fs.existsSync( this.dbPath ) ) return;        
         const info = fs.readFileSync( this.dbPath, { encoding: 'utf-8' });
         const data = JSON.parse( info );
-
-        this.historial = data.historial;
-
-
+        this.history = data.history;
     }
-
 }
 
-
-
-
-
-module.exports = Busquedas;
+module.exports = Search;
