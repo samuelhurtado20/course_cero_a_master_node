@@ -1,0 +1,9 @@
+PUT http://localhost:8080/api/users/62a942b0c89bd37a3ebf71e1 HTTP/1.1 
+content-type: application/json
+
+{
+    "name": "Hurtado", 
+    "email": "samuelhurtado20@gmail.com", 
+    "password": "123456", 
+    "role": "ADMIN"
+}
