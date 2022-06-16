@@ -25,7 +25,7 @@ const usersPost = async(req, res = response) => {
     console.log(req.body)
     const { name, email, password, role } = req.body;
     const user = new User({ name, email, password, role });
-console.log(user)
+
     // encript password
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync( password, salt );
