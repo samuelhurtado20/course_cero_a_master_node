@@ -1,0 +1,7 @@
+###
+GET http://localhost:8080/api/category/ HTTP/1.1 
+content-type: application/json
+
+###
+GET http://localhost:8080/api/category/62acd46ed1224eb38647df6b
+content-type: application/json

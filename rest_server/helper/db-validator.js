@@ -1,3 +1,4 @@
+const { Category, Product } = require('../models');
 const Role = require('../models/role.model');
 const User = require('../models/user.model');
 
@@ -21,14 +22,40 @@ const emailExists = async( email = '' ) => {
 
 const userExistsById = async( id ) => {
     // check if the email exist
-    const userExists = await User.findById(id);
-    if ( !userExists ) {
+    const user = await User.findById(id);
+    if ( !user ) {
         throw new Error(`The id: ${ id } do not exist.`);
     }
+}
+
+ const categoryExistsById = async( id ) => {
+    const exists = await Category.findById(id);
+    if ( !exists ) {
+        throw new Error(`Category id: ${ id } not found`);
+    }
+}
+
+const productExistsById = async( id ) => {
+    const product = await Product.findById(id);
+    if ( !product ) {
+        throw new Error(`Product id: ${ id } not found`);
+    }
+}
+
+const allowedCollections = ( collection = '', collections = []) => {
+
+    const include = collections.includes( collection );
+    if ( !include ) {
+        throw new Error(`the collection ${ collection } is not allowed ${ collections }`);
+    }
+    return true;
 }
 
 module.exports = {
     isRoleValid,
     emailExists,
-    userExistsById
+    userExistsById,
+    categoryExistsById,
+    productExistsById,
+    allowedCollections
 }

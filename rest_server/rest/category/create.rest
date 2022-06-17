@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/category/ HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmFhMWUyNzA4NzExMGI1MGM1MGQ0MDEiLCJpYXQiOjE2NTU0OTM2NzIsImV4cCI6MTY1NTUwODA3Mn0.YN2vQAfr6P4rvv9xs7IV-E3jzE6FWsw1WbXaq6gFUc4
+content-type: application/json
+
+{
+    "name": "Samuel", 
+    "email": "samuelhurtado20@hotmail.com", 
+    "password": "123456", 
+    "role": "ADMIN"
+}
