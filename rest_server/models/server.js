@@ -11,6 +11,8 @@ class Server {
         this.usersPath = '/api/users';
         this.authPath = '/api/auth';
         this.categoriesPath = '/api/category';
+        this.productsPath = '/api/product';
+        this.searchPath = '/api/search'
 
         this.conectarDB();
 
@@ -29,10 +31,8 @@ class Server {
 
         // CORS
         this.app.use( cors() );
-
         // body parser
         this.app.use( express.json() );
-
         // public folder
         this.app.use( express.static('public') );
     }
@@ -41,6 +41,8 @@ class Server {
         this.app.use( this.authPath, require('../routes/auth.routes'));
         this.app.use( this.usersPath, require('../routes/user.routes'));
         this.app.use( this.categoriesPath, require('../routes/category.routes'));
+        this.app.use( this.productsPath, require('../routes/product.routes'));
+        this.app.use( this.searchPath, require('../routes/search.routes'));
     }
 
     listen() {

@@ -1,0 +1,7 @@
+PUT http://localhost:8080/api/product/62ad31862d8f08d00fd05e8d HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmFhMWUyNzA4NzExMGI1MGM1MGQ0MDEiLCJpYXQiOjE2NTU1MTA4OTksImV4cCI6MTY1NTUyNTI5OX0.QnpgReTdl_scpxxjsUWGA-YiTHKgqLxYFaXXKvPxUOI
+content-type: application/json
+
+{
+    "name": "Galleta 3"
+}
