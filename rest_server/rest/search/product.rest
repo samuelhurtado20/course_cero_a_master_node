@@ -1,0 +1,8 @@
+GET  http://localhost:8080/api/search/products/62ad14ed91a25498b40ba08a HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmFhMWUyNzA4NzExMGI1MGM1MGQ0MDEiLCJpYXQiOjE2NTU1MTA4OTksImV4cCI6MTY1NTUyNTI5OX0.QnpgReTdl_scpxxjsUWGA-YiTHKgqLxYFaXXKvPxUOI
+content-type: application/json
+
+###
+GET  http://localhost:8080/api/search/products/maria HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmFhMWUyNzA4NzExMGI1MGM1MGQ0MDEiLCJpYXQiOjE2NTU1MTA4OTksImV4cCI6MTY1NTUyNTI5OX0.QnpgReTdl_scpxxjsUWGA-YiTHKgqLxYFaXXKvPxUOI
+content-type: application/json
