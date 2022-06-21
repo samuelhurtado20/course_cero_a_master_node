@@ -10,6 +10,10 @@ npm install express-validator@5.3.1 --save-exact
 npm i jsonwebtoken
 npm install google-auth-library --save
 
+npm i express-fileupload
+
+npm i socket.io
+
 #How can I change the author name / email of a commit?
 #Changing Your Committer Name & Email Globally
 $ git config --global user.name "John Doe"
@@ -61,8 +65,8 @@ fi
 ' --tag-name-filter cat -- --branches --tags
 
 
-
 rectas              maximo      liviano     100km
+rectas              MODERADO    liviano     100-135km
 
 carreteras  curvas  maximo      liviano     60km
 carreteras  curvas  moderado    liviano     60-75km
