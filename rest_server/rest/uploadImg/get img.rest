@@ -1,0 +1,6 @@
+GET  http://localhost:8080/api/uploadImg/Users/62a93d61ab8e24767e808a53 HTTP/1.1
+content-type: application/json
+
+###
+GET  http://localhost:8080/api/uploadImg/Products/62ad14ed91a25498b40ba08a HTTP/1.1
+content-type: application/json
